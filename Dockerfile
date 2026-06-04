@@ -32,3 +32,5 @@ COPY download_models.py /download_models.py
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
+
+# rebuild: ensure placeholder baked into :latest (CI race fix)
