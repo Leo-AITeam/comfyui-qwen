@@ -23,6 +23,10 @@ RUN python3.12 -m pip install --no-cache-dir huggingface_hub && \
 RUN mkdir -p /opt/comfyui-baked/user/default
 COPY qwen_prompt_api.json /opt/comfyui-baked/user/default/qwen_prompt_api.json
 
+# --- 3b. Placeholder input face (Qwen-Edit needs an input image for portrait gen) ---
+RUN mkdir -p /opt/comfyui-baked/input
+COPY placeholder.png /opt/comfyui-baked/input/placeholder.png
+
 # --- 4. Model downloader + entrypoint ---
 COPY download_models.py /download_models.py
 COPY entrypoint.sh /entrypoint.sh
