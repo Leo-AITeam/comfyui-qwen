@@ -1,0 +1,169 @@
+{
+ "37": {
+  "class_type": "UNETLoader",
+  "inputs": {
+   "unet_name": "qwen_image_edit_2509_fp8_e4m3fn.safetensors",
+   "weight_dtype": "fp8_e4m3fn"
+  }
+ },
+ "38": {
+  "class_type": "CLIPLoader",
+  "inputs": {
+   "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+   "type": "qwen_image",
+   "device": "default"
+  }
+ },
+ "39": {
+  "class_type": "VAELoader",
+  "inputs": {
+   "vae_name": "qwen_image_vae.safetensors"
+  }
+ },
+ "111": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "clip": [
+    "38",
+    0
+   ],
+   "text": "blurry, distorted face, low quality, deformed, disfigured, mutated"
+  }
+ },
+ "645": {
+  "class_type": "ImageScaleToTotalPixels",
+  "inputs": {
+   "image": [
+    "644",
+    0
+   ],
+   "upscale_method": "lanczos",
+   "megapixels": 2
+  }
+ },
+ "644": {
+  "class_type": "LoadImage",
+  "inputs": {
+   "image": "small0-enhanced-1765424093779.png",
+   "upload": "image"
+  }
+ },
+ "3": {
+  "class_type": "KSampler",
+  "inputs": {
+   "model": [
+    "66",
+    0
+   ],
+   "positive": [
+    "174",
+    0
+   ],
+   "negative": [
+    "111",
+    0
+   ],
+   "latent_image": [
+    "176",
+    0
+   ],
+   "seed": 1052288923038730,
+   "steps": 8,
+   "cfg": 1,
+   "sampler_name": "euler",
+   "scheduler": "simple",
+   "denoise": 1
+  }
+ },
+ "8": {
+  "class_type": "VAEDecode",
+  "inputs": {
+   "samples": [
+    "3",
+    0
+   ],
+   "vae": [
+    "39",
+    0
+   ]
+  }
+ },
+ "646": {
+  "class_type": "CR Aspect Ratio",
+  "inputs": {
+   "width": 1024,
+   "height": 1024,
+   "aspect_ratio": "SDXL - 9:16 portrait 768x1344",
+   "swap_dimensions": "Off",
+   "upscale_factor": 1,
+   "batch_size": 1
+  }
+ },
+ "176": {
+  "class_type": "EmptyLatentImage",
+  "inputs": {
+   "width": [
+    "646",
+    0
+   ],
+   "height": [
+    "646",
+    1
+   ],
+   "batch_size": 1
+  }
+ },
+ "174": {
+  "class_type": "TextEncodeQwenImageEditPlus",
+  "inputs": {
+   "clip": [
+    "38",
+    0
+   ],
+   "vae": [
+    "39",
+    0
+   ],
+   "image1": [
+    "645",
+    0
+   ],
+   "prompt": "Professional portrait photo of the same person, maintain exact facial features and identity"
+  }
+ },
+ "66": {
+  "class_type": "ModelSamplingAuraFlow",
+  "inputs": {
+   "model": [
+    "89",
+    0
+   ],
+   "shift": 5
+  }
+ },
+ "89": {
+  "class_type": "LoraLoaderModelOnly",
+  "inputs": {
+   "model": [
+    "37",
+    0
+   ],
+   "lora_name": "QWEN/Qwen-Image-Edit-Lightning-8steps-V1.0.safetensors",
+   "strength_model": 1
+  }
+ },
+ "651": {
+  "class_type": "SaveImage",
+  "inputs": {
+   "images": [
+    "8",
+    0
+   ],
+   "filename_prefix": "qwen_face"
+  }
+ },
+ "652": {
+  "class_type": "Text",
+  "inputs": {}
+ }
+}
