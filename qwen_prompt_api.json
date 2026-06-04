@@ -38,7 +38,8 @@
     0
    ],
    "upscale_method": "lanczos",
-   "megapixels": 2
+   "megapixels": 2,
+   "resolution_steps": 1
   }
  },
  "644": {
@@ -96,7 +97,8 @@
    "aspect_ratio": "SDXL - 9:16 portrait 768x1344",
    "swap_dimensions": "Off",
    "upscale_factor": 1,
-   "batch_size": 1
+   "batch_size": 1,
+   "prescale_factor": 1
   }
  },
  "176": {
